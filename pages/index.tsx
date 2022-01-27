@@ -4,6 +4,9 @@ import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import CursorChat from '@yomo/react-cursor-chat'
+import '@yomo/react-cursor-chat/dist/cursor-chat.min.css'
+import CursorChatTip from '@components/CursorChatTip'
 
 export async function getStaticProps({
   preview,
@@ -84,6 +87,17 @@ export default function Home({
         categories={categories}
         brands={brands}
       /> */}
+      <CursorChat
+        presenceURL="wss://presence.yomo.dev"
+        presenceAuth={{
+          type: 'token',
+          endpoint: '/api/presence-auth',
+        }}
+        room='home'
+        avatar={`/cursor-avatar/${new Date().getSeconds() % 9}.png`}
+        theme="light"
+      />
+      <CursorChatTip />
     </>
   )
 }

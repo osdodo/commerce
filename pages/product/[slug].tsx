@@ -7,6 +7,9 @@ import { useRouter } from 'next/router'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductView } from '@components/product'
+import CursorChat from '@yomo/react-cursor-chat'
+import '@yomo/react-cursor-chat/dist/cursor-chat.min.css'
+import CursorChatTip from '@components/CursorChatTip'
 
 export async function getStaticProps({
   params,
@@ -54,12 +57,12 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
   return {
     paths: locales
       ? locales.reduce<string[]>((arr, locale) => {
-          // Add a product path for every locale
-          products.forEach((product: any) => {
-            arr.push(`/${locale}/product${product.path}`)
-          })
-          return arr
-        }, [])
+        // Add a product path for every locale
+        products.forEach((product: any) => {
+          arr.push(`/${locale}/product${product.path}`)
+        })
+        return arr
+      }, [])
       : products.map((product: any) => `/product${product.path}`),
     fallback: 'blocking',
   }
@@ -74,7 +77,20 @@ export default function Slug({
   return router.isFallback ? (
     <h1>Loading...</h1>
   ) : (
-    <ProductView product={product} relatedProducts={relatedProducts} />
+    <>
+      <ProductView product={product} relatedProducts={relatedProducts} />
+      <CursorChat
+        presenceURL="wss://presence.yomo.dev"
+        presenceAuth={{
+          type: 'token',
+          endpoint: '/api/presence-auth',
+        }}
+        room={router.asPath}
+        avatar={`/cursor-avatar/${new Date().getSeconds() % 9}.png`}
+        theme="light"
+      />
+      <CursorChatTip />
+    </>
   )
 }
 
