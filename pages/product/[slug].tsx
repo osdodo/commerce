@@ -80,7 +80,7 @@ export default function Slug({
     <>
       <ProductView product={product} relatedProducts={relatedProducts} />
       <CursorChat
-        presenceURL="wss://presence.yomo.dev"
+        presenceURL="wss://prsc.yomo.dev"
         presenceAuth={{
           type: 'token',
           endpoint: '/api/presence-auth',
@@ -88,6 +88,7 @@ export default function Slug({
         room={router.asPath}
         avatar={`/cursor-avatar/${new Date().getSeconds() % 9}.png`}
         theme="light"
+        showLatency
       />
       <CursorChatTip />
     </>
