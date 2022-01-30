@@ -6,7 +6,7 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     try {
-      const response = await fetch('https://presence.yomo.dev/api/v1/auth', {
+      const response = await fetch('https://prsc.yomo.dev/api/v1/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
