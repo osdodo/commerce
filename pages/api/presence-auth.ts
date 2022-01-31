@@ -17,7 +17,12 @@ export default async function handler(
         }),
       })
       const data = await response.json()
-      res.status(200).json(data.data)
+      const token = data.data
+      if (token) {
+        res.status(200).json(token)
+      } else {
+        res.status(400).json({ msg: data.message })
+      }
     } catch (error) {
       if (typeof error === 'string') {
         res.status(500).json({ msg: error })

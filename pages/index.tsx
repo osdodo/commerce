@@ -88,6 +88,7 @@ export default function Home({
         brands={brands}
       /> */}
       <CursorChat
+        showLatency
         presenceURL="wss://prsc.yomo.dev"
         presenceAuth={{
           type: 'token',
@@ -96,7 +97,6 @@ export default function Home({
         room='home'
         avatar={`/cursor-avatar/${new Date().getSeconds() % 9}.png`}
         theme="light"
-        showLatency
       />
       <CursorChatTip />
     </>
