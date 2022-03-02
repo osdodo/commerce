@@ -5,7 +5,7 @@ import { Grid, Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import CursorChat from '@yomo/react-cursor-chat'
-import '@yomo/react-cursor-chat/dist/cursor-chat.min.css'
+import '@yomo/react-cursor-chat/dist/light.css'
 import CursorChatTip from '@components/CursorChatTip'
 
 export async function getStaticProps({
@@ -89,14 +89,10 @@ export default function Home({
       /> */}
       <CursorChat
         showLatency
-        presenceURL="wss://prsc.yomo.dev"
-        presenceAuth={{
-          type: 'token',
-          endpoint: '/api/presence-auth',
-        }}
-        room='home'
+        presenceURL="https://prsc.yomo.dev"
+        presenceAuthEndpoint="/api/presence-auth"
+        room="home"
         avatar={`/cursor-avatar/${new Date().getSeconds() % 9}.png`}
-        theme="light"
       />
       <CursorChatTip />
     </>

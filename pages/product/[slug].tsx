@@ -8,7 +8,7 @@ import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductView } from '@components/product'
 import CursorChat from '@yomo/react-cursor-chat'
-import '@yomo/react-cursor-chat/dist/cursor-chat.min.css'
+import '@yomo/react-cursor-chat/dist/light.css'
 import CursorChatTip from '@components/CursorChatTip'
 
 export async function getStaticProps({
@@ -81,14 +81,10 @@ export default function Slug({
       <ProductView product={product} relatedProducts={relatedProducts} />
       <CursorChat
         showLatency
-        presenceURL="wss://prsc.yomo.dev"
-        presenceAuth={{
-          type: 'token',
-          endpoint: '/api/presence-auth',
-        }}
+        presenceURL="https://prsc.yomo.dev"
+        presenceAuthEndpoint="/api/presence-auth"
         room={router.asPath}
         avatar={`/cursor-avatar/${new Date().getSeconds() % 9}.png`}
-        theme="light"
       />
       <CursorChatTip />
     </>
