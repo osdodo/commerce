@@ -5,7 +5,7 @@ import { Grid, Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import CursorChat from '@yomo/react-cursor-chat'
-import '@yomo/react-cursor-chat/dist/light.css'
+import '@yomo/react-cursor-chat/dist/dark.css'
 import CursorChatTip from '@components/CursorChatTip'
 
 export async function getStaticProps({
