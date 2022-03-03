@@ -8,7 +8,7 @@ import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductView } from '@components/product'
 import CursorChat from '@yomo/react-cursor-chat'
-import '@yomo/react-cursor-chat/dist/light.css'
+import '@yomo/react-cursor-chat/dist/apricot-yellow.css'
 import CursorChatTip from '@components/CursorChatTip'
 
 export async function getStaticProps({
